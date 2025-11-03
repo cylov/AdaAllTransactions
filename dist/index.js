@@ -1,0 +1,601 @@
+import { BigNumber } from 'bignumber.js';
+const allTxs = [
+    {
+        "tx_hash": "f1c3370d8bf8bc4f503f5dfc2df4fe79a1e77abdcdbe2c337f2db9b7faf754fc",
+        "tx_fee": "174278",
+        "tx_deposit": "0",
+        "block_no": 12569512,
+        "block_index": 6,
+        "block_hash": "e96ccbe023703a0712037b81de2218d8bbbcb44222e73c899dc807c7c9f286c1",
+        "epoch_no": 590,
+        "slot_no": 169941411,
+        "epoch_slot_no": 424611,
+        "time": 1761507702,
+        "amount": "-47545573541",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "37a94fc121e6da2d35cfea969ba182dbe89deef11388c4ed642cee006d90c81f",
+        "tx_fee": "186671",
+        "tx_deposit": "-2000000",
+        "block_no": 12555831,
+        "block_index": 7,
+        "block_hash": "abc5cc31b063cc8b3fd9ec2b4e22eb994d8a1079f15758b90acaaa98122a746a",
+        "epoch_no": 590,
+        "slot_no": 169668575,
+        "epoch_slot_no": 151775,
+        "time": 1761234866,
+        "amount": "1813329",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "50646e8ac7845aa33e6480ac8c68b8f54ef65f0c92f8e083fdf30e5111552da5",
+        "tx_fee": "186363",
+        "tx_deposit": "0",
+        "block_no": 12555829,
+        "block_index": 0,
+        "block_hash": "81e842ed8a6a0af2da849fc90a6210dd7da4d487d43a4933f2661f40030bb82a",
+        "epoch_no": 590,
+        "slot_no": 169668547,
+        "epoch_slot_no": 151747,
+        "time": 1761234838,
+        "amount": "378056588",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "c989a3db7d9558914613ad9548425d35876c882cfe852005285314441b20bbf4",
+        "tx_fee": "186671",
+        "tx_deposit": "2000000",
+        "block_no": 11971155,
+        "block_index": 3,
+        "block_hash": "312c5e62ef830661965748245cc5669d7afb3dc18682a175e1bb3bfc29412e7d",
+        "epoch_no": 562,
+        "slot_no": 157841407,
+        "epoch_slot_no": 420607,
+        "time": 1749407698,
+        "amount": "-2186671",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "0b591e9990c6579751e210179ae615d804136563e882d2de221e803256d5fba9",
+        "tx_fee": "243214",
+        "tx_deposit": "-2000000",
+        "block_no": 9758664,
+        "block_index": 8,
+        "block_hash": "a8626159c16ff4ecf5c059921e7f8386424ba03a29daf81fa522d1ab950daef5",
+        "epoch_no": 458,
+        "slot_no": 112751695,
+        "epoch_slot_no": 258895,
+        "time": 1704317986,
+        "amount": "64026945",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "3949ce2845c070b2941a51836079aa42da0c1cb0b53ddfee0581167f5bf3230e",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 9693995,
+        "block_index": 10,
+        "block_hash": "1b63fc72c958f64dee4357c53a49084a1caadb9cb0feb44ca0cd86c04d594bdc",
+        "epoch_no": 455,
+        "slot_no": 111431557,
+        "epoch_slot_no": 234757,
+        "time": 1702997848,
+        "amount": "85920267",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "a15e5297c21237099bc5d089adf45dc26a9b51c2e603e5b9dfab188828182cec",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 9593266,
+        "block_index": 12,
+        "block_hash": "ac560d488a3f59a4038401e3d33bdebcab7e06c74c3c667215d43fa38f227742",
+        "epoch_no": 450,
+        "slot_no": 109371489,
+        "epoch_slot_no": 334689,
+        "time": 1700937780,
+        "amount": "309336013",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "34ecf3cab942d01032d908bb3f0343d695db664f2790a4cee7ea32367a171559",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 9254054,
+        "block_index": 10,
+        "block_hash": "70baf48d4ebf2fbf58d5e7d881cf41792b22ac2fdc0af40a16455c010465a249",
+        "epoch_no": 434,
+        "slot_no": 102427131,
+        "epoch_slot_no": 302331,
+        "time": 1693993422,
+        "amount": "475567340",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "67601b43311fd80fb844ed9977120073fd31bf0a8c26c227cbe4cd827a2f0dd3",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 8739031,
+        "block_index": 6,
+        "block_hash": "fce26845de98ae01f6db5e2f044069d90ecf91fcbf41761d5cc639ad826c96ca",
+        "epoch_no": 410,
+        "slot_no": 91821307,
+        "epoch_slot_no": 64507,
+        "time": 1683387598,
+        "amount": "74036815",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "5fe4e4374e5d1e10f58eabf7440950d64d0a07924d2c122a07ca327aac0b80f3",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 8664094,
+        "block_index": 6,
+        "block_hash": "f3998a2579e266874c6d6931df3506b3405605d3f76f786393e9bee963dd6007",
+        "epoch_no": 406,
+        "slot_no": 90284780,
+        "epoch_slot_no": 255980,
+        "time": 1681851071,
+        "amount": "257141298",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "55cb34c7a35f3818a1c9ab0fd3041d01583db6d5cc85b669560dcdaeb5f41014",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 8418493,
+        "block_index": 26,
+        "block_hash": "d745a547b25a70821ed86a678f32e4250a732430701c68c91b13d2db14990639",
+        "epoch_no": 394,
+        "slot_no": 85230754,
+        "epoch_slot_no": 385954,
+        "time": 1676797045,
+        "amount": "413321687",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "38e11168b84242aa08912bf6b0ab59e9984e19edd02e1e5487b603375674cfad",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 7989160,
+        "block_index": 7,
+        "block_hash": "56402835d92711739d817da2e9aafe5a4b4c08bf71b58b1b704397542ab51e7d",
+        "epoch_no": 374,
+        "slot_no": 76371753,
+        "epoch_slot_no": 166953,
+        "time": 1667938044,
+        "amount": "281453814",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "e3ad71d13ad74a900ee5e6faeb6ca8a4e9aa155a060aa466afcbab43d6f387c2",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 7749012,
+        "block_index": 19,
+        "block_hash": "5af62bc30e8285aee7cc7c61a5d0532c3352ad6160291379a12a6b0c6ebc2409",
+        "epoch_no": 362,
+        "slot_no": 71445775,
+        "epoch_slot_no": 424975,
+        "time": 1663012066,
+        "amount": "393442173",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "135ed00cb552fa4415b21627940872c3f8e7269a451ab39809b27364df6005b3",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 7394861,
+        "block_index": 3,
+        "block_hash": "222d5ddd7697e029c6db62b06316ca9728a8b2265840bec03f74f03442935ad1",
+        "epoch_no": 345,
+        "slot_no": 64062465,
+        "epoch_slot_no": 385665,
+        "time": 1655628756,
+        "amount": "152009171",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "29d50a7a8ac48a3a89a3aa488aaafc86e293ed463aefdf9e440e4bd150577ec9",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 7257304,
+        "block_index": 16,
+        "block_hash": "1d32b2a51c0f27a55dbec26c481312db21aae448522ae3b4d3c6ca15189c1f38",
+        "epoch_no": 339,
+        "slot_no": 61212091,
+        "epoch_slot_no": 127291,
+        "time": 1652778382,
+        "amount": "206314069",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "d37b1d2c4b79445a45a926984c650447e02087352aed8ad58b1b6b4a087ab405",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 7078811,
+        "block_index": 17,
+        "block_hash": "434d0a7f8490a36919add840c3aae25ad86e6771dd2f28c8951a0833fc4fd435",
+        "epoch_no": 330,
+        "slot_no": 57452981,
+        "epoch_slot_no": 256181,
+        "time": 1649019272,
+        "amount": "17845481",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "7864b6c15ef34bed87cf9fabb2457173d31454c437d05a28de5a1bb032b73e34",
+        "tx_fee": "233854",
+        "tx_deposit": "0",
+        "block_no": 7057942,
+        "block_index": 9,
+        "block_hash": "7a87c33f8291cb21d70cd7a45575cae9ccb1a91e0c1ee6bb491c734f910cc91d",
+        "epoch_no": 329,
+        "slot_no": 57014137,
+        "epoch_slot_no": 249337,
+        "time": 1648580428,
+        "amount": "338629110",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "ef137dc10cd7848b706abbd15ca8fdae5681e45f0cf34eef52f4839452d52408",
+        "tx_fee": "238161",
+        "tx_deposit": "0",
+        "block_no": 6772971,
+        "block_index": 53,
+        "block_hash": "2d17987d5542b81517a2c548795eb790b393927dc737210542da0b46a7776809",
+        "epoch_no": 315,
+        "slot_no": 50971991,
+        "epoch_slot_no": 255191,
+        "time": 1642538282,
+        "amount": "485227473",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "a72afe2c62b81cbebd21456f2a8743ffcfe04826e8da6f73e49cc32ea3788438",
+        "tx_fee": "227174",
+        "tx_deposit": "0",
+        "block_no": 6383096,
+        "block_index": 28,
+        "block_hash": "00e4d6fd5f2f6d2d17df16794200d9afa8903e1d4331dcf9445222ef4b59c405",
+        "epoch_no": 296,
+        "slot_no": 42920803,
+        "epoch_slot_no": 412003,
+        "time": 1634487094,
+        "amount": "626847720",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "d9d762018151ef22771471a50298744f92e177aa051e3b681a4d5b873df9c218",
+        "tx_fee": "197174",
+        "tx_deposit": "0",
+        "block_no": 5867414,
+        "block_index": 9,
+        "block_hash": "b140759b8dbd7d610f3e526f0003ea75e62caed4d3947ee5784cf4927b85cdd6",
+        "epoch_no": 272,
+        "slot_no": 32461231,
+        "epoch_slot_no": 320431,
+        "time": 1624027522,
+        "amount": "389063879",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "dbcd3ab3cdd26a946227f86fdf7743ab0f0025fdc1dd17fdae6c285dfd9e7884",
+        "tx_fee": "192604",
+        "tx_deposit": "0",
+        "block_no": 5578179,
+        "block_index": 14,
+        "block_hash": "89235eb7d672507b9d54f77d50d6cf31c025f76bf960dc8d3112afbb04822c04",
+        "epoch_no": 259,
+        "slot_no": 26588330,
+        "epoch_slot_no": 63530,
+        "time": 1618154621,
+        "amount": "372083250",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "c05a9c2b92904f5475a896efd586e7342506bd8cb16b70516b8a711af16c119c",
+        "tx_fee": "192604",
+        "tx_deposit": "0",
+        "block_no": 5303732,
+        "block_index": 6,
+        "block_hash": "4e3b268f203e45787298e91d6afdfa5ff093eb585c56e36e1bc5a89333e413e9",
+        "epoch_no": 246,
+        "slot_no": 20979955,
+        "epoch_slot_no": 71155,
+        "time": 1612546246,
+        "amount": "79050555",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "5ae5ee3faaa758c7d97e84e6169da8a1f4c0af6eda2dbae8bd4299119bddaba7",
+        "tx_fee": "192604",
+        "tx_deposit": "0",
+        "block_no": 5242796,
+        "block_index": 6,
+        "block_hash": "06f4cd05223b3a2191176e94d5f756fba274ec14dd499fee21b0f1ca1b11cd93",
+        "epoch_no": 243,
+        "slot_no": 19756227,
+        "epoch_slot_no": 143427,
+        "time": 1611322518,
+        "amount": "120750769",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "f049e471351ace100789f0759bd23b61d7862f55cb967e0705111fb192806aeb",
+        "tx_fee": "200294",
+        "tx_deposit": "0",
+        "block_no": 5157401,
+        "block_index": 2,
+        "block_hash": "f1ce984f24c722896b39536394e1ac58417412f641d2e8e9c15374e8e2ed3fa1",
+        "epoch_no": 239,
+        "slot_no": 18034397,
+        "epoch_slot_no": 149597,
+        "time": 1609600688,
+        "amount": "22468089",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "74eda396ec70fbb7f084202224d69f9bb7d0cf404c6d8d96977edf2d0a4425da",
+        "tx_fee": "404421",
+        "tx_deposit": "0",
+        "block_no": 5157399,
+        "block_index": 7,
+        "block_hash": "b1bc53a888e151b42ac1317fa37290a5e28b837af056dec13ee15e883b64bb7d",
+        "epoch_no": 239,
+        "slot_no": 18034347,
+        "epoch_slot_no": 149547,
+        "time": 1609600638,
+        "amount": "1427250600",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "61e711a193d3d0f526a2e2acbda76651dbc3bd9857ac7751c8e1b28b86d13ba8",
+        "tx_fee": "192604",
+        "tx_deposit": "0",
+        "block_no": 5132336,
+        "block_index": 3,
+        "block_hash": "9c3d479e9b6c3cc736a55c890e271a541914cac42dbcd03566388f5a8bd98374",
+        "epoch_no": 238,
+        "slot_no": 17523237,
+        "epoch_slot_no": 70437,
+        "time": 1609089528,
+        "amount": "25653142",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "de8dd2b6fceceb1ae516342723ffed67700990a880f1e5e2d36478067795b6d7",
+        "tx_fee": "208380",
+        "tx_deposit": "2000000",
+        "block_no": 5109794,
+        "block_index": 0,
+        "block_hash": "b7c45b411f3ed971af6ba96b2b41c98dd3d1e174220f28551e438acb30cd7fea",
+        "epoch_no": 237,
+        "slot_no": 17068108,
+        "epoch_slot_no": 47308,
+        "time": 1608634399,
+        "amount": "-2208380",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "d13ea41e4a360683433ba660565b649b503ddb8478d13697a605e9d871ed693d",
+        "tx_fee": "199020",
+        "tx_deposit": "-2000000",
+        "block_no": 5109787,
+        "block_index": 1,
+        "block_hash": "ee400ff3ebe51120ddc73c95598215db20ba28cc2dc886ff410888e90618e0ab",
+        "epoch_no": 237,
+        "slot_no": 17068013,
+        "epoch_slot_no": 47213,
+        "time": 1608634304,
+        "amount": "1800980",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "6437ffcbc1bde46c7f05c4b5a2089d032c285fa2a61c68021f909231c1b5cce1",
+        "tx_fee": "192604",
+        "tx_deposit": "0",
+        "block_no": 5109780,
+        "block_index": 1,
+        "block_hash": "dda500decf78d3b2dbeca77079ad01ae524237db4b53d54e5bbefbfe91f39c3a",
+        "epoch_no": 237,
+        "slot_no": 17067925,
+        "epoch_slot_no": 47125,
+        "time": 1608634216,
+        "amount": "28343878",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "20dd7697d29da2f3c9508c3bc18b33b5b4cb26b056b8ca156d4f06ec2fcb6ba3",
+        "tx_fee": "219235",
+        "tx_deposit": "2000000",
+        "block_no": 5102687,
+        "block_index": 5,
+        "block_hash": "101e752c91897a7f83e044b6ba7467d11f063bde8332e28bbf93a369fdfb4e13",
+        "epoch_no": 236,
+        "slot_no": 16923050,
+        "epoch_slot_no": 334250,
+        "time": 1608489341,
+        "amount": "-2219235",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "246030ca8c928e1637432f09fc646abf91daa091213954a0d6752cbe23b39553",
+        "tx_fee": "173509",
+        "tx_deposit": "0",
+        "block_no": 5102686,
+        "block_index": 1,
+        "block_hash": "5a378328515b19548bf303af469e56f3a99df8bc9d7ee45e5e6ba0998e7eea41",
+        "epoch_no": 236,
+        "slot_no": 16922987,
+        "epoch_slot_no": 334187,
+        "time": 1608489278,
+        "amount": "6472411400",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "b32b9ce7f4b74717419d9cca59ea0d5710cb1e7007769fd96939803de0df03ac",
+        "tx_fee": "199020",
+        "tx_deposit": "-2000000",
+        "block_no": 5102676,
+        "block_index": 0,
+        "block_hash": "4cf19221cac0702709b4be21dc79881bdeb11182af4330c1dbf259e912a2f5a0",
+        "epoch_no": 236,
+        "slot_no": 16922757,
+        "epoch_slot_no": 333957,
+        "time": 1608489048,
+        "amount": "1800980",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "eff4df04f9feaf662c0c73c5af70b19da367ae30be5aabd5917cad300c96338b",
+        "tx_fee": "192604",
+        "tx_deposit": "0",
+        "block_no": 5102658,
+        "block_index": 1,
+        "block_hash": "9e2ee7ce439af4beeea7e0bbf72d99bdd45c38ee415e8598c8362742f2eaa9ca",
+        "epoch_no": 236,
+        "slot_no": 16922354,
+        "epoch_slot_no": 333554,
+        "time": 1608488645,
+        "amount": "82439186",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "d32a0ec870000567732aefd094043d7906bbf71a8d64232ab36eb3d87bc2cab9",
+        "tx_fee": "197526",
+        "tx_deposit": "2000000",
+        "block_no": 4939678,
+        "block_index": 1,
+        "block_hash": "f74301c385dc8650ed7efccab86487c52b79fe99c40150522b460d8f8ce1b7b3",
+        "epoch_no": 229,
+        "slot_no": 13589017,
+        "epoch_slot_no": 24217,
+        "time": 1605155308,
+        "amount": "-2197526",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    },
+    {
+        "tx_hash": "17fbc11dd9edc40700ba4c419ade8524299561d75671c8aa97abd60b645a81a7",
+        "tx_fee": "255139",
+        "tx_deposit": "0",
+        "block_no": 4931870,
+        "block_index": 0,
+        "block_hash": "f85f6fc9a77c0586715047f1e83f45a7b0a17d0e24d697bfb77a10992d97dfc2",
+        "epoch_no": 228,
+        "slot_no": 13430186,
+        "epoch_slot_no": 297386,
+        "time": 1604996477,
+        "amount": "33970279352",
+        "token": 0,
+        "tokens": {
+            "rows": []
+        }
+    }
+];
+console.log("test");
+console.log("test");
+//# sourceMappingURL=index.js.map
