@@ -596,6 +596,16 @@ const allTxs = [
         }
     }
 ];
-console.log("test");
+let allTransactions = allTxs.reverse();
+for (let tx of allTransactions) {
+    const utc_string = tx.time + '000';
+    const utc = parseInt(utc_string);
+    const date = new Date(utc);
+    date.setHours(date.getHours() + 2);
+    // balanceChangeFloat
+    //const balanceChangeFloat: number = tx.balance_change / 1000000;
+    const amount = new BigNumber(tx.amount).dividedBy(1000000);
+    console.log(date.toLocaleDateString('de-De') + ' ' + date.toLocaleTimeString('de-DE') + ',' + amount.toString());
+}
 console.log("test");
 //# sourceMappingURL=index.js.map
